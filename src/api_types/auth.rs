@@ -19,7 +19,7 @@ pub mod login {
 	pub struct Response {
 		pub user_id: i32,
 		pub access_level: i32,
-		pub key: String,
+		pub key: Vec<u8>,
 	}
 }
 
