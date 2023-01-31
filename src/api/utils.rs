@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub enum Method {
     Get,
     Post,
@@ -5,6 +6,7 @@ pub enum Method {
     Delete,
 }
 
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub enum AuthRequirement {
     No,
     Any,
