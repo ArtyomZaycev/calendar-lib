@@ -1,5 +1,5 @@
 pub mod login {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 
 
@@ -24,7 +24,7 @@ pub mod login {
 }
 
 pub mod register {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 
 
@@ -48,7 +48,7 @@ pub mod register {
 }
 
 pub mod new_password {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 
 

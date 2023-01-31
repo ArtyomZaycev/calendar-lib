@@ -1,5 +1,5 @@
 pub mod load {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	use chrono::NaiveDateTime;
 	
@@ -28,7 +28,7 @@ pub mod load {
 }
 
 pub mod load_array {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 
 
@@ -50,7 +50,7 @@ pub mod load_array {
 }
 
 pub mod insert {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	use chrono::NaiveDateTime;
 	
@@ -75,7 +75,7 @@ pub mod insert {
 }
 
 pub mod update {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	use chrono::NaiveDateTime;
 	
@@ -104,7 +104,7 @@ pub mod update {
 
 
 pub mod delete {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	
 

@@ -11,7 +11,7 @@ pub mod load { // NOT IMPLEMENTED
 }
 
 pub mod load_array {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	
 
@@ -33,7 +33,7 @@ pub mod load_array {
 }
 
 pub mod load_user_roles {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	
 
@@ -57,7 +57,7 @@ pub mod load_user_roles {
 }
 
 pub mod insert {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	
 
@@ -78,7 +78,7 @@ pub mod insert {
 }
 
 pub mod delete {
-	use crate::api_types::utils::{Method, AuthRequirement};
+	use crate::api::utils::{Method, AuthRequirement};
 	use serde::{Serialize, Deserialize};
 	
 
