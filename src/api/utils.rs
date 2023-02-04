@@ -5,12 +5,3 @@ pub enum Method {
     Patch,
     Delete,
 }
-
-#[derive(Debug, Clone, PartialEq, PartialOrd)]
-pub enum AuthRequirement {
-    No,
-    Any,
-    Full,
-    Admin,
-    SuperAdmin,
-}

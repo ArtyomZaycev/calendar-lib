@@ -1,62 +1,57 @@
-pub mod login {
-    use crate::api::{types::*, utils::Method};
-    use serde::{Deserialize, Serialize};
+pub use super::roles::Role;
 
-    pub static METHOD: Method = Method::Post;
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub email: String,
-        pub password: String,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub user: User,
-        pub access_level: i32,
-        pub edit_rights: bool,
-        pub key: Vec<u8>,
-    }
-}
-
-pub mod register {
+pub mod load_array {
     use crate::api::utils::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Post;
+    pub static METHOD: Method = Method::Get;
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Args {
+        pub user_id: Option<i32>, // Admin can load roles of any user
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {}
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Response {
+        pub array: Vec<super::Role>,
+    }
+}
+
+pub mod insert {
+    use crate::api::utils::Method;
+    use serde::{Deserialize, Serialize};
+
+    pub static METHOD: Method = Method::Patch;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {
-        pub name: String,
-        pub email: String,
-        pub password: String,
+        pub user_id: i32,
+        pub role_id: i32,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {}
 }
 
-pub mod new_password {
+pub mod delete {
     use crate::api::utils::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Post;
+    pub static METHOD: Method = Method::Delete;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub new_password: String,
-        pub access_level: i32,
-        pub edit_right: bool,
+    pub struct Args {
+        pub id: i32,
     }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {}
