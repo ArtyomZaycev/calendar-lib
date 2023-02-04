@@ -1,4 +1,4 @@
-pub use super::roles::Role;
+pub use super::roles::types::Role;
 
 pub mod load_array {
     use crate::api::utils::Method;

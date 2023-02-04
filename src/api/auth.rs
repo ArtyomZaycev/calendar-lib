@@ -1,5 +1,5 @@
 pub mod login {
-    use crate::api::{types::*, utils::Method};
+    use crate::api::utils::*;
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::Post;
