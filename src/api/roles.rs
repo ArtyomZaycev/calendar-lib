@@ -2,7 +2,7 @@ pub mod types {
     use serde::{Deserialize, Serialize};
 
     #[repr(i32)]
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
     pub enum Role {
         SuperAdmin = 1,
         Admin = 2,
