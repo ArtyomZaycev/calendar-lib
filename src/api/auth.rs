@@ -40,6 +40,11 @@ pub mod register {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub enum BadRequestResponse {
+        EmailAlreadyUsed,
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {}
 }
 
