@@ -36,10 +36,10 @@ pub mod types {
 
 pub mod load {
     use super::types::*;
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Get;
+    pub static METHOD: Method = Method::GET;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
@@ -57,10 +57,10 @@ pub mod load {
 
 pub mod load_array {
     use super::types::*;
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Get;
+    pub static METHOD: Method = Method::GET;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -76,10 +76,10 @@ pub mod load_array {
 
 pub mod insert {
     use super::types::*;
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Post;
+    pub static METHOD: Method = Method::POST;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -95,10 +95,10 @@ pub mod insert {
 
 pub mod update {
     use super::types::*;
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Patch;
+    pub static METHOD: Method = Method::PATCH;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -113,10 +113,10 @@ pub mod update {
 }
 
 pub mod delete {
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Delete;
+    pub static METHOD: Method = Method::DELETE;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {

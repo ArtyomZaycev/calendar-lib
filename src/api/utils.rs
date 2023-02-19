@@ -1,13 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, PartialOrd)]
-pub enum Method {
-    Get,
-    Post,
-    Patch,
-    Delete,
-}
-
+// TODO: Remove
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct User {
     pub id: i32,

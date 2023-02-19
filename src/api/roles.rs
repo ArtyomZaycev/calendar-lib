@@ -11,10 +11,10 @@ pub mod types {
 
 pub mod load_array {
     use super::types::*;
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Get;
+    pub static METHOD: Method = Method::GET;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}

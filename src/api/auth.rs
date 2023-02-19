@@ -1,8 +1,9 @@
 pub mod login {
-    use crate::api::utils::*;
+    use crate::api::utils::User;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Post;
+    pub static METHOD: Method = Method::POST;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -23,10 +24,10 @@ pub mod login {
 }
 
 pub mod register {
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Post;
+    pub static METHOD: Method = Method::POST;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -43,10 +44,10 @@ pub mod register {
 }
 
 pub mod new_password {
-    use crate::api::utils::Method;
+    use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::Post;
+    pub static METHOD: Method = Method::POST;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
