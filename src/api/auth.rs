@@ -1,3 +1,20 @@
+pub mod logout {
+    use http::Method;
+    use serde::{Deserialize, Serialize};
+
+    pub static METHOD: Method = Method::POST;
+    pub static PATH: &str = "logout";
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Args {}
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {}
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Response {}
+}
+
 pub mod login {
     use crate::api::utils::User;
     use http::Method;
