@@ -15,6 +15,7 @@ pub mod load_array {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::GET;
+    pub static PATH: &str = "roles";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}

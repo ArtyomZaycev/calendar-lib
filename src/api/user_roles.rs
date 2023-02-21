@@ -5,6 +5,7 @@ pub mod load_array {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::GET;
+    pub static PATH: &str = "user_roles";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
@@ -25,6 +26,7 @@ pub mod insert {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::PATCH;
+    pub static PATH: &str = "user_role";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -44,6 +46,7 @@ pub mod delete {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::DELETE;
+    pub static PATH: &str = "user_role";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {

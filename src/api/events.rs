@@ -40,6 +40,7 @@ pub mod load {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::GET;
+    pub static PATH: &str = "event";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
@@ -61,6 +62,7 @@ pub mod load_array {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::GET;
+    pub static PATH: &str = "events";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -80,6 +82,7 @@ pub mod insert {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::POST;
+    pub static PATH: &str = "event";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -99,6 +102,7 @@ pub mod update {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::PATCH;
+    pub static PATH: &str = "event";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -117,6 +121,7 @@ pub mod delete {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::DELETE;
+    pub static PATH: &str = "event";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {

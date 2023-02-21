@@ -4,6 +4,7 @@ pub mod login {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::POST;
+    pub static PATH: &str = "login";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -28,6 +29,7 @@ pub mod register {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::POST;
+    pub static PATH: &str = "register";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -53,6 +55,7 @@ pub mod new_password {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::POST;
+    pub static PATH: &str = "new_password";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
