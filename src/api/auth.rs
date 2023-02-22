@@ -1,3 +1,14 @@
+pub mod types {
+    use serde::{Deserialize, Serialize};
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct AccessLevel {
+        pub level: i32,
+        pub name: String,
+        pub edit_rights: bool,
+    }
+}
+
 pub mod logout {
     use http::Method;
     use serde::{Deserialize, Serialize};
@@ -16,6 +27,7 @@ pub mod logout {
 }
 
 pub mod login {
+    use super::types::*;
     use crate::api::utils::User;
     use http::Method;
     use serde::{Deserialize, Serialize};
@@ -35,8 +47,7 @@ pub mod login {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
-        pub access_level: i32,
-        pub edit_rights: bool,
+        pub access_level: AccessLevel,
         pub key: Vec<u8>,
     }
 }
@@ -87,4 +98,24 @@ pub mod new_password {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {}
+}
+
+pub mod load_access_levels {
+    use super::types::*;
+    use http::Method;
+    use serde::{Deserialize, Serialize};
+
+    pub static METHOD: Method = Method::GET;
+    pub static PATH: &str = "auth/load_access_levels";
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Args {}
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {}
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Response {
+        pub array: Vec<AccessLevel>,
+    }
 }
