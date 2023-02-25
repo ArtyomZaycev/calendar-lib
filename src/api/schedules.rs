@@ -1,61 +1,50 @@
+// NOT IMPLEMENTED
+
 pub mod types {
+    use std::num::{NonZeroU16, NonZeroU32};
+
     use chrono::NaiveDateTime;
     use serde::{Deserialize, Serialize};
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Event {
+    pub struct WeekdayMask(pub u8);
+
+    impl Default for WeekdayMask {
+        fn default() -> Self {
+            Self(0b1111111)
+        }
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Schedule {
         pub id: i32,
         pub user_id: i32,
-        pub name: String,
-        pub description: Option<String>,
         pub start: NaiveDateTime,
-        pub end: NaiveDateTime,
-        pub access_level: i32,
-        pub schedule_id: Option<i32>,
+        pub weekday_filter: WeekdayMask,
+        pub day_period: Option<NonZeroU32>,
+        pub time_period: Option<NonZeroU16>,
+        pub event_duration: u16,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct NewEvent {
-        pub name: String,
-        pub description: Option<String>,
+    pub struct NewSchedule {
+        pub user_id: i32,
         pub start: NaiveDateTime,
-        pub end: NaiveDateTime,
-        pub access_level: i32,
-        pub schedule_id: Option<i32>,
+        pub weekday_filter: WeekdayMask,
+        pub day_period: Option<NonZeroU32>,
+        pub time_period: Option<NonZeroU16>,
+        pub event_duration: u16,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct UpdateEvent {
+    pub struct UpdateSchedule {
         pub id: i32,
         pub user_id: Option<i32>,
-        pub name: Option<String>,
-        pub description: Option<Option<String>>,
         pub start: Option<NaiveDateTime>,
-        pub end: Option<NaiveDateTime>,
-        pub access_level: Option<i32>,
-        pub schedule_id: Option<Option<i32>>,
-    }
-}
-
-pub mod load {
-    use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
-
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "event";
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub event: Event,
+        pub weekday_filter: Option<WeekdayMask>,
+        pub day_period: Option<Option<NonZeroU32>>,
+        pub time_period: Option<Option<NonZeroU16>>,
+        pub event_duration: Option<u16>,
     }
 }
 
@@ -65,7 +54,7 @@ pub mod load_array {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "events";
+    pub static PATH: &str = "schedules";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -75,7 +64,7 @@ pub mod load_array {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
-        pub array: Vec<Event>,
+        pub array: Vec<Schedule>,
     }
 }
 
@@ -85,14 +74,14 @@ pub mod insert {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "event";
+    pub static PATH: &str = "schedule";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {
-        pub new_event: NewEvent,
+        pub new_schedule: NewSchedule,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -105,14 +94,14 @@ pub mod update {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::PATCH;
-    pub static PATH: &str = "event";
+    pub static PATH: &str = "schedule";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {
-        pub upd_event: UpdateEvent,
+        pub upd_schedule: UpdateSchedule,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -124,7 +113,7 @@ pub mod delete {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::DELETE;
-    pub static PATH: &str = "event";
+    pub static PATH: &str = "schedule";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
