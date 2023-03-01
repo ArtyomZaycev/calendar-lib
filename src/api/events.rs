@@ -11,7 +11,7 @@ pub mod types {
         pub start: NaiveDateTime,
         pub end: NaiveDateTime,
         pub access_level: i32,
-        pub schedule_id: Option<i32>,
+        pub plan_id: Option<i32>,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -21,7 +21,7 @@ pub mod types {
         pub start: NaiveDateTime,
         pub end: NaiveDateTime,
         pub access_level: i32,
-        pub schedule_id: Option<i32>,
+        pub plan_id: Option<i32>,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -33,7 +33,7 @@ pub mod types {
         pub start: Option<NaiveDateTime>,
         pub end: Option<NaiveDateTime>,
         pub access_level: Option<i32>,
-        pub schedule_id: Option<Option<i32>>,
+        pub plan_id: Option<Option<i32>>,
     }
 }
 

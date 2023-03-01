@@ -1,43 +1,27 @@
 pub mod types {
-    use chrono::{NaiveDate, NaiveTime, Weekday};
+    use std::time::Duration;
+
     use serde::{Deserialize, Serialize};
-    
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct EventPlan {
-        pub id: i32,
-        pub weekday: Weekday,
-        pub time: NaiveTime,
-    }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Schedule {
+    pub struct EventTemplate {
         pub id: i32,
         pub user_id: i32,
-        pub template_id: i32,
         pub name: String,
-        pub description: Option<String>,
-        pub first_day: NaiveDate,
-        pub last_day: Option<NaiveDate>,
+        pub event_name: String,
+        pub event_description: Option<String>,
+        pub duration: Duration,
         pub access_level: i32,
-        pub events: Vec<EventPlan>,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct NewEventPlan {
-        pub weekday: Weekday,
-        pub time: NaiveTime,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct NewSchedule {
+    pub struct NewEventTemplate {
         pub user_id: i32,
-        pub template_id: i32,
         pub name: String,
-        pub description: Option<String>,
-        pub first_day: NaiveDate,
-        pub last_day: Option<NaiveDate>,
+        pub event_name: String,
+        pub event_description: Option<String>,
+        pub duration: Duration,
         pub access_level: i32,
-        pub events: Vec<NewEventPlan>,
     }
 }
 
@@ -47,7 +31,7 @@ pub mod load_array {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "schedules";
+    pub static PATH: &str = "event_templates";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -57,7 +41,7 @@ pub mod load_array {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
-        pub array: Vec<Schedule>,
+        pub array: Vec<EventTemplate>,
     }
 }
 
@@ -67,14 +51,14 @@ pub mod insert {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "schedule";
+    pub static PATH: &str = "event_template";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {
-        pub new_schedule: NewSchedule,
+        pub new_event_template: NewEventTemplate,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -86,7 +70,7 @@ pub mod delete {
     use serde::{Deserialize, Serialize};
 
     pub static METHOD: Method = Method::DELETE;
-    pub static PATH: &str = "schedule";
+    pub static PATH: &str = "event_template";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
