@@ -16,6 +16,7 @@ pub mod types {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct NewEvent {
+        pub user_id: i32,
         pub name: String,
         pub description: Option<String>,
         pub start: NaiveDateTime,
