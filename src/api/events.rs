@@ -2,6 +2,29 @@ pub mod types {
     use chrono::NaiveDateTime;
     use serde::{Deserialize, Serialize};
 
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+    #[repr(i8)]
+    pub enum EventVisibility {
+        HideAll,            // No access - hide completelly
+        HideName,           // No access - show time
+        HideDescription,    // No access - show name & time
+        Show,               // No access - show anyway
+    }
+
+    impl TryFrom<i8> for EventVisibility {
+        type Error = ();
+
+        fn try_from(value: i8) -> Result<Self, Self::Error> {
+            match value {
+                0 => Ok(EventVisibility::HideAll),
+                1 => Ok(EventVisibility::HideName),
+                2 => Ok(EventVisibility::HideDescription),
+                3 => Ok(EventVisibility::Show),
+                _ => Err(())
+            }
+        }
+    }
+
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Event {
         pub id: i32,
@@ -11,6 +34,7 @@ pub mod types {
         pub start: NaiveDateTime,
         pub end: NaiveDateTime,
         pub access_level: i32,
+        pub visibility: EventVisibility,
         pub plan_id: Option<i32>,
     }
 
@@ -22,6 +46,7 @@ pub mod types {
         pub start: NaiveDateTime,
         pub end: NaiveDateTime,
         pub access_level: i32,
+        pub visibility: EventVisibility,
         pub plan_id: Option<i32>,
     }
 
@@ -34,6 +59,7 @@ pub mod types {
         pub start: Option<NaiveDateTime>,
         pub end: Option<NaiveDateTime>,
         pub access_level: Option<i32>,
+        pub visibility: Option<EventVisibility>,
         pub plan_id: Option<Option<i32>>,
     }
 }
