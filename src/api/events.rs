@@ -84,6 +84,11 @@ pub mod load {
     pub struct Response {
         pub event: Event,
     }
+    
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub enum BadRequestResponse {
+        NotFound,
+    }
 }
 
 pub mod load_array {
