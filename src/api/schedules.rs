@@ -66,7 +66,9 @@ pub mod load {
     pub static PATH: &str = "schedule";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args { pub id: i32}
+    pub struct Args {
+        pub id: i32,
+    }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}
