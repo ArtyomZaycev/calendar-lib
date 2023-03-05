@@ -2,13 +2,15 @@ pub mod types {
     use chrono::NaiveDateTime;
     use serde::{Deserialize, Serialize};
 
+    use crate::api::utils::UpdateOption;
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
     #[repr(i8)]
     pub enum EventVisibility {
-        HideAll,            // No access - hide completelly
-        HideName,           // No access - show time
-        HideDescription,    // No access - show name & time
-        Show,               // No access - show anyway
+        HideAll,         // No access - hide completelly
+        HideName,        // No access - show time
+        HideDescription, // No access - show name & time
+        Show,            // No access - show anyway
     }
 
     impl TryFrom<i8> for EventVisibility {
@@ -20,7 +22,7 @@ pub mod types {
                 1 => Ok(EventVisibility::HideName),
                 2 => Ok(EventVisibility::HideDescription),
                 3 => Ok(EventVisibility::Show),
-                _ => Err(())
+                _ => Err(()),
             }
         }
     }
@@ -53,14 +55,14 @@ pub mod types {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct UpdateEvent {
         pub id: i32,
-        pub user_id: Option<i32>,
-        pub name: Option<String>,
-        pub description: Option<Option<String>>,
-        pub start: Option<NaiveDateTime>,
-        pub end: Option<NaiveDateTime>,
-        pub access_level: Option<i32>,
-        pub visibility: Option<EventVisibility>,
-        pub plan_id: Option<Option<i32>>,
+        pub user_id: UpdateOption<i32>,
+        pub name: UpdateOption<String>,
+        pub description: UpdateOption<Option<String>>,
+        pub start: UpdateOption<NaiveDateTime>,
+        pub end: UpdateOption<NaiveDateTime>,
+        pub access_level: UpdateOption<i32>,
+        pub visibility: UpdateOption<EventVisibility>,
+        pub plan_id: UpdateOption<Option<i32>>,
     }
 }
 
@@ -84,7 +86,7 @@ pub mod load {
     pub struct Response {
         pub event: Event,
     }
-    
+
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub enum BadRequestResponse {
         NotFound,

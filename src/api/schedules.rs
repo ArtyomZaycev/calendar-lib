@@ -1,7 +1,7 @@
 pub mod types {
     use chrono::{NaiveDate, NaiveTime, Weekday};
     use serde::{Deserialize, Serialize};
-    
+
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct EventPlan {
         pub id: i32,
