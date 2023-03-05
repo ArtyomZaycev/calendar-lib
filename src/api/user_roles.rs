@@ -1,8 +1,8 @@
-use super::roles::types::Role;
-
 pub mod load_array {
     use http::Method;
     use serde::{Deserialize, Serialize};
+
+    use crate::api::roles::types::Role;
 
     pub static METHOD: Method = Method::GET;
     pub static PATH: &str = "user_roles";
@@ -17,7 +17,7 @@ pub mod load_array {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
-        pub array: Vec<super::Role>,
+        pub array: Vec<Role>,
     }
 }
 

@@ -84,7 +84,7 @@ pub mod load {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
-        pub event: Event,
+        pub value: Event,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]

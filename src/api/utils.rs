@@ -8,6 +8,7 @@ pub struct User {
     pub phone: Option<String>,
 }
 
+// It's needed because Some(None) serializes to null
 #[derive(Debug, Serialize, Deserialize)]
 pub enum UpdateOption<T> {
     None,
@@ -50,5 +51,19 @@ where
 impl<T> UpdateOption<T> {
     pub fn option(self) -> Option<T> {
         self.into()
+    }
+
+    pub fn option_ref(&self) -> Option<&T> {
+        match self {
+            UNone => None,
+            USome(t) => Some(t),
+        }
+    }
+
+    pub fn option_mut(&mut self) -> Option<&mut T> {
+        match self {
+            UNone => None,
+            USome(t) => Some(t),
+        }
     }
 }
