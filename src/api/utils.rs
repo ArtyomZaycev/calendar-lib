@@ -8,6 +8,15 @@ pub struct User {
     pub phone: Option<String>,
 }
 
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub enum UnauthorizedResponse {
+    WrongKey,
+    SessionExpired,
+    NoAccessLevel,
+    NoEditRights,
+    Unauthorized,
+}
+
 // It's needed because Some(None) serializes to null
 #[derive(Debug, Serialize, Deserialize)]
 pub enum UpdateOption<T> {
@@ -51,6 +60,10 @@ where
 impl<T> UpdateOption<T> {
     pub fn option(self) -> Option<T> {
         self.into()
+    }
+
+    pub fn option_clone(&self) -> Option<T> where T: Clone {
+        self.clone().into()
     }
 
     pub fn option_ref(&self) -> Option<&T> {

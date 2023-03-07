@@ -90,6 +90,7 @@ pub mod new_password {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {
+        pub user_id: i32,
         pub name: String,
         pub new_password: String,
         pub access_level: i32,
