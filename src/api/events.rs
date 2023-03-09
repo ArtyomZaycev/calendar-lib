@@ -55,7 +55,6 @@ pub mod types {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct UpdateEvent {
         pub id: i32,
-        pub user_id: UpdateOption<i32>,
         pub name: UpdateOption<String>,
         pub description: UpdateOption<Option<String>>,
         pub start: UpdateOption<NaiveDateTime>,

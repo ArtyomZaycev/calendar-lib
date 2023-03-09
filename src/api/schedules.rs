@@ -45,7 +45,6 @@ pub mod types {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct UpdateSchedule {
         pub id: i32,
-        pub user_id: UpdateOption<i32>,
         //pub template_id: UpdateOption<i32>,
         pub name: UpdateOption<String>,
         pub description: UpdateOption<Option<String>>,

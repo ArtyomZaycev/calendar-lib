@@ -17,17 +17,6 @@ pub mod types {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct UpdateEventTemplate {
-        pub id: i32,
-        pub user_id: UpdateOption<i32>,
-        pub name: UpdateOption<String>,
-        pub event_name: UpdateOption<String>,
-        pub event_description: UpdateOption<Option<String>>,
-        pub duration: UpdateOption<Duration>,
-        pub access_level: UpdateOption<i32>,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct NewEventTemplate {
         pub user_id: i32,
         pub name: String,
@@ -35,6 +24,16 @@ pub mod types {
         pub event_description: Option<String>,
         pub duration: Duration,
         pub access_level: i32,
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct UpdateEventTemplate {
+        pub id: i32,
+        pub name: UpdateOption<String>,
+        pub event_name: UpdateOption<String>,
+        pub event_description: UpdateOption<Option<String>>,
+        pub duration: UpdateOption<Duration>,
+        pub access_level: UpdateOption<i32>,
     }
 }
 
