@@ -7,6 +7,23 @@ pub mod types {
         pub name: String,
         pub edit_rights: bool,
     }
+
+    impl AccessLevel {
+        pub const MAX_LEVEL: i32 = 1000;
+
+        pub fn is_max_level(&self) -> bool {
+            self.level >= Self::MAX_LEVEL
+        }
+        pub fn is_full(&self) -> bool {
+            self.is_max_level() && self.edit_rights
+        }
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct NewPassword {
+        pub name: String,
+        pub password: String,
+    }
 }
 
 pub mod logout {
@@ -82,6 +99,8 @@ pub mod new_password {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
+    use super::types::NewPassword;
+
     pub static METHOD: Method = Method::POST;
     pub static PATH: &str = "auth/new_password";
 
@@ -91,10 +110,9 @@ pub mod new_password {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {
         pub user_id: i32,
-        pub name: String,
-        pub new_password: String,
         pub access_level: i32,
-        pub edit_right: bool,
+        pub viewer_password: Option<NewPassword>,
+        pub editor_password: Option<NewPassword>,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -111,9 +129,6 @@ pub mod load_access_levels {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
