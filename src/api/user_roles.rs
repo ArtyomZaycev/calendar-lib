@@ -13,9 +13,6 @@ pub mod load_array {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub array: Vec<Role>,
     }

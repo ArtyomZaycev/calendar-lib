@@ -51,9 +51,6 @@ pub mod load {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub value: EventTemplate,
     }
@@ -73,9 +70,6 @@ pub mod load_array {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
