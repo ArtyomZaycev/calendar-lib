@@ -62,6 +62,11 @@ pub mod login {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub enum BadRequestResponse {
+        UserNotFound,   // Both for unknown name & wrong password
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
         pub access_level: AccessLevel,
