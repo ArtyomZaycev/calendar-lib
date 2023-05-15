@@ -61,7 +61,10 @@ impl<T> UpdateOption<T> {
         self.into()
     }
 
-    pub fn option_clone(&self) -> Option<T> where T: Clone {
+    pub fn option_clone(&self) -> Option<T>
+    where
+        T: Clone,
+    {
         self.clone().into()
     }
 

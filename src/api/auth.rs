@@ -63,7 +63,7 @@ pub mod login {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub enum BadRequestResponse {
-        UserNotFound,   // Both for unknown name & wrong password
+        UserNotFound, // Both for unknown name & wrong password
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
