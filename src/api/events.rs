@@ -27,7 +27,7 @@ pub mod types {
         }
     }
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
+    #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
     pub struct Event {
         pub id: i32,
         pub user_id: i32,
