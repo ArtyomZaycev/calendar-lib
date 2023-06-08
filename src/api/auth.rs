@@ -74,6 +74,32 @@ pub mod login {
     }
 }
 
+pub mod login_by_key {
+    use super::types::*;
+    use crate::api::utils::User;
+    use http::Method;
+    use serde::{Deserialize, Serialize};
+
+    pub static METHOD: Method = Method::POST;
+    pub static PATH: &str = "auth/login_key";
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Args {}
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {
+        pub user_id: i32,
+        pub key: Vec<u8>,
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Response {
+        pub user: User,
+        pub access_level: AccessLevel,
+        pub key: Vec<u8>,
+    }
+}
+
 pub mod register {
     use http::Method;
     use serde::{Deserialize, Serialize};
