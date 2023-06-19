@@ -70,7 +70,7 @@ pub mod login {
     pub struct Response {
         pub user: User,
         pub access_level: AccessLevel,
-        pub key: Vec<u8>,
+        pub jwt: String,
     }
 }
 
@@ -87,16 +87,13 @@ pub mod login_by_key {
     pub struct Args {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub user_id: i32,
-        pub key: Vec<u8>,
-    }
+    pub struct Body {}
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
         pub access_level: AccessLevel,
-        pub key: Vec<u8>,
+        pub jwt: String,
     }
 }
 
