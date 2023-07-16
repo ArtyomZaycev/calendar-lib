@@ -1,10 +1,12 @@
 use serde::{Deserialize, Serialize};
+use super::roles::types::Role;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct User {
     pub id: i32,
     pub name: String,
     pub email: String,
+    pub roles: Vec<Role>,
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
