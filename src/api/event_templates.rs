@@ -130,8 +130,5 @@ pub mod delete {
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {}
 }
