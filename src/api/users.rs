@@ -4,8 +4,8 @@ pub mod load_ids {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "user_ids";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "user_ids";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -21,8 +21,8 @@ pub mod load {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "user";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "user";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
@@ -45,8 +45,8 @@ pub mod load_array {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "users";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "users";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}

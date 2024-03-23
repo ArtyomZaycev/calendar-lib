@@ -19,8 +19,8 @@ pub mod load_user_memory_usage {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "load_user_memory_usage";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "load_user_memory_usage";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {

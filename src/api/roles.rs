@@ -14,8 +14,8 @@ pub mod load_array {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "roles";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "roles";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}

@@ -7,8 +7,8 @@ pub mod load {
         schedules::types::Schedule,
     };
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "state";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "state";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {

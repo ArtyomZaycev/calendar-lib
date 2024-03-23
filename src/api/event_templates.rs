@@ -42,8 +42,8 @@ pub mod load {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "event_template";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "event_template";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
@@ -65,8 +65,8 @@ pub mod load_array {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "event_templates";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "event_templates";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -82,8 +82,8 @@ pub mod insert {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "event_template";
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "event_template";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -102,8 +102,8 @@ pub mod update {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::PATCH;
-    pub static PATH: &str = "event_template";
+    pub const METHOD: Method = Method::PATCH;
+    pub const PATH: &str = "event_template";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -121,8 +121,8 @@ pub mod delete {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::DELETE;
-    pub static PATH: &str = "event_template";
+    pub const METHOD: Method = Method::DELETE;
+    pub const PATH: &str = "event_template";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {

@@ -30,8 +30,8 @@ pub mod logout {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "auth/logout";
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "auth/logout";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -49,8 +49,8 @@ pub mod login {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "auth/login";
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "auth/login";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -80,8 +80,8 @@ pub mod login_by_key {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "auth/login_key";
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "auth/login_key";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -101,8 +101,8 @@ pub mod register {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "auth/register";
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "auth/register";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -129,8 +129,8 @@ pub mod new_password {
 
     use super::types::NewPassword;
 
-    pub static METHOD: Method = Method::POST;
-    pub static PATH: &str = "auth/new_password";
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "auth/new_password";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
@@ -152,8 +152,8 @@ pub mod load_access_levels {
     use http::Method;
     use serde::{Deserialize, Serialize};
 
-    pub static METHOD: Method = Method::GET;
-    pub static PATH: &str = "auth/load_access_levels";
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "auth/load_access_levels";
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
