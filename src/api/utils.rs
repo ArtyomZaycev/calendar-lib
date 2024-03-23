@@ -1,7 +1,7 @@
 use super::roles::types::Role;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct User {
     pub id: i32,
     pub name: String,
