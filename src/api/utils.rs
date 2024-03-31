@@ -84,3 +84,7 @@ impl<T> UpdateOption<T> {
         }
     }
 }
+
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct EmptyResponse {}

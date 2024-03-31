@@ -1,7 +1,9 @@
 pub mod types {
-    use chrono::NaiveDateTime;
-    use serde::{Deserialize, Serialize};
+    pub(super) use crate::api::utils::EmptyResponse;
+    pub(super) use http::Method;
+    pub(super) use serde::{Deserialize, Serialize};
 
+    use chrono::NaiveDateTime;
     use crate::api::utils::UpdateOption;
 
     #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -67,21 +69,13 @@ pub mod types {
 
 pub mod load {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "event";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
+    pub type Args = i32;
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub value: Event,
-    }
+    pub type Response = Event;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub enum BadRequestResponse {
@@ -91,8 +85,6 @@ pub mod load {
 
 pub mod load_array {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "events";
@@ -100,16 +92,11 @@ pub mod load_array {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub array: Vec<Event>,
-    }
+    pub type Response = Vec<Event>;
 }
 
 pub mod insert {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "event";
@@ -117,19 +104,13 @@ pub mod insert {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub new_event: NewEvent,
-    }
+    pub type Body = NewEvent;
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod update {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::PATCH;
     pub const PATH: &str = "event";
@@ -137,30 +118,20 @@ pub mod update {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub upd_event: UpdateEvent,
-    }
+    pub type Body = UpdateEvent;
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod delete {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::DELETE;
     pub const PATH: &str = "event";
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
+    pub type Args = i32;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }

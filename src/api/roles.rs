@@ -20,8 +20,5 @@ pub mod load_array {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub array: Vec<Role>,
-    }
+    pub type Response = Vec<Role>;
 }
