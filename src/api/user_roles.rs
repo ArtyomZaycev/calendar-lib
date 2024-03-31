@@ -1,5 +1,5 @@
 pub mod types {
-    pub(super) use crate::api::utils::EmptyResponse;
+    pub(super) use crate::api::utils::{DeleteByIdQuery, EmptyResponse};
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 }
@@ -47,10 +47,7 @@ pub mod delete {
     pub const METHOD: Method = Method::DELETE;
     pub const PATH: &str = "user_role";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
+    pub type Args = DeleteByIdQuery;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}

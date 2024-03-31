@@ -44,8 +44,8 @@ pub mod logout {
 }
 
 pub mod login {
-    use crate::api::utils::User;
     use super::types::*;
+    use crate::api::utils::User;
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/login";
@@ -73,8 +73,8 @@ pub mod login {
 }
 
 pub mod login_by_key {
-    use crate::api::utils::User;
     use super::types::*;
+    use crate::api::utils::User;
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/login_key";

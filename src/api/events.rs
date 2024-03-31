@@ -1,10 +1,10 @@
 pub mod types {
-    pub(super) use crate::api::utils::EmptyResponse;
+    pub(super) use crate::api::utils::{DeleteByIdQuery, EmptyResponse, LoadByIdQuery};
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
-    use chrono::NaiveDateTime;
     use crate::api::utils::UpdateOption;
+    use chrono::NaiveDateTime;
 
     #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
     #[repr(i8)]
@@ -73,7 +73,7 @@ pub mod load {
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "event";
 
-    pub type Args = i32;
+    pub type Args = LoadByIdQuery;
 
     pub type Response = Event;
 
@@ -128,7 +128,7 @@ pub mod delete {
 
     pub const METHOD: Method = Method::DELETE;
     pub const PATH: &str = "event";
-    pub type Args = i32;
+    pub type Args = DeleteByIdQuery;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}

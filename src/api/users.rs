@@ -17,17 +17,14 @@ pub mod load_ids {
 }
 
 pub mod load {
-    use crate::api::utils::User;
+    use crate::api::utils::{LoadByIdQuery, User};
     use http::Method;
     use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "user";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub user_id: i32,
-    }
+    pub type Args = LoadByIdQuery;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {

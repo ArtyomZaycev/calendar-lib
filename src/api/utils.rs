@@ -85,6 +85,17 @@ impl<T> UpdateOption<T> {
     }
 }
 
+pub type TableId = i32;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct EmptyResponse {}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LoadByIdQuery {
+    pub id: TableId,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct DeleteByIdQuery {
+    pub id: TableId,
+}

@@ -1,10 +1,10 @@
 pub mod auth;
 pub mod event_templates;
 pub mod events;
+pub mod other;
 pub mod roles;
 pub mod schedules;
 pub mod user_roles;
 pub mod user_state;
 pub mod users;
-pub mod other;
 pub mod utils;
