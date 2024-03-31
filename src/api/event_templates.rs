@@ -1,5 +1,7 @@
 pub mod types {
-    pub(super) use crate::api::utils::{DeleteByIdQuery, EmptyResponse, LoadByIdQuery, LoadByIdBadRequestResponse};
+    pub(super) use crate::api::utils::{
+        DeleteByIdQuery, EmptyResponse, LoadByIdBadRequestResponse, LoadByIdQuery,
+    };
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
