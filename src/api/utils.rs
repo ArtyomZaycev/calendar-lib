@@ -91,6 +91,11 @@ pub type TableId = i32;
 pub struct EmptyResponse {}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum LoadByIdBadRequestResponse {
+    NotFound,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LoadByIdQuery {
     pub id: TableId,
 }

@@ -1,5 +1,5 @@
 pub mod types {
-    pub(super) use crate::api::utils::{DeleteByIdQuery, EmptyResponse, LoadByIdQuery};
+    pub(super) use crate::api::utils::{DeleteByIdQuery, EmptyResponse, LoadByIdQuery, LoadByIdBadRequestResponse};
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
@@ -45,16 +45,8 @@ pub mod load {
     pub const PATH: &str = "event_template";
 
     pub type Args = LoadByIdQuery;
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub value: EventTemplate,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub enum BadRequestResponse {
-        NotFound,
-    }
+    pub type Response = EventTemplate;
+    pub type BadRequestResponse = LoadByIdBadRequestResponse;
 }
 pub mod load_array {
     use super::types::*;
