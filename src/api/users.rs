@@ -1,8 +1,15 @@
 // ADMIN ONLY REQUESTS
 
+pub mod types {
+    pub(super) use crate::api::utils::{
+        LoadByIdBadRequestResponse, LoadByIdQuery, User
+    };
+    pub(super) use http::Method;
+    pub(super) use serde::{Deserialize, Serialize};
+}
+
 pub mod load_ids {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "user_ids";
@@ -17,24 +24,14 @@ pub mod load_ids {
 }
 
 pub mod load {
-    use crate::api::utils::{LoadByIdQuery, User};
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "user";
 
     pub type Args = LoadByIdQuery;
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub value: User,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub enum BadRequestResponse {
-        NotFound,
-    }
+    pub type Response = User;
+    pub type BadRequestResponse = LoadByIdBadRequestResponse;
 }
 
 pub mod load_array {
@@ -48,8 +45,5 @@ pub mod load_array {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub array: Vec<User>,
-    }
+    pub type Response = Vec<User>;
 }
