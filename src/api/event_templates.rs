@@ -50,6 +50,7 @@ pub mod load {
     pub type Response = EventTemplate;
     pub type BadRequestResponse = LoadByIdBadRequestResponse;
 }
+
 pub mod load_array {
     use super::types::*;
 

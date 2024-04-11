@@ -3,6 +3,7 @@ pub mod types {
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
+    // TODO: User id field
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct AccessLevel {
         pub level: i32,
