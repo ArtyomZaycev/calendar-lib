@@ -1,8 +1,12 @@
 pub mod types {
-    use chrono::{NaiveDate, NaiveTime, Weekday};
-    use serde::{Deserialize, Serialize};
+    pub(super) use crate::api::utils::{
+        DeleteByIdQuery, EmptyResponse, LoadByIdBadRequestResponse, LoadByIdQuery,
+    };
+    pub(super) use http::Method;
+    pub(super) use serde::{Deserialize, Serialize};
 
     use crate::api::utils::UpdateOption;
+    use chrono::{NaiveDate, NaiveTime, Weekday};
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct EventPlan {
@@ -58,32 +62,17 @@ pub mod types {
 
 pub mod load {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "schedule";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub value: Schedule,
-    }
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub enum BadRequestResponse {
-        NotFound,
-    }
+    pub type Args = LoadByIdQuery;
+    pub type Response = Schedule;
+    pub type BadRequestResponse = LoadByIdBadRequestResponse;
 }
 
 pub mod load_array {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "schedules";
@@ -91,16 +80,11 @@ pub mod load_array {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub array: Vec<Schedule>,
-    }
+    pub type Response = Vec<Schedule>;
 }
 
 pub mod insert {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "schedule";
@@ -108,19 +92,13 @@ pub mod insert {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub new_schedule: NewSchedule,
-    }
+    pub type Body = NewSchedule;
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod update {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::PATCH;
     pub const PATH: &str = "schedule";
@@ -128,30 +106,21 @@ pub mod update {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub upd_schedule: UpdateSchedule,
-    }
+    pub type Body = UpdateSchedule;
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod delete {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::DELETE;
     pub const PATH: &str = "schedule";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
+    pub type Args = DeleteByIdQuery;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }

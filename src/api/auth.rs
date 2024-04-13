@@ -1,6 +1,9 @@
 pub mod types {
-    use serde::{Deserialize, Serialize};
+    pub(super) use crate::api::utils::EmptyResponse;
+    pub(super) use http::Method;
+    pub(super) use serde::{Deserialize, Serialize};
 
+    // TODO: User id field
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct AccessLevel {
         pub level: i32,
@@ -27,8 +30,7 @@ pub mod types {
 }
 
 pub mod logout {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/logout";
@@ -39,15 +41,12 @@ pub mod logout {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod login {
     use super::types::*;
     use crate::api::utils::User;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/login";
@@ -77,8 +76,6 @@ pub mod login {
 pub mod login_by_key {
     use super::types::*;
     use crate::api::utils::User;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/login_key";
@@ -98,8 +95,7 @@ pub mod login_by_key {
 }
 
 pub mod register {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/register";
@@ -119,15 +115,11 @@ pub mod register {
         EmailAlreadyUsed,
     }
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod new_password {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
-
-    use super::types::NewPassword;
+    use super::types::*;
 
     pub const METHOD: Method = Method::POST;
     pub const PATH: &str = "auth/new_password";
@@ -143,14 +135,11 @@ pub mod new_password {
         pub editor_password: Option<NewPassword>,
     }
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod load_access_levels {
     use super::types::*;
-    use http::Method;
-    use serde::{Deserialize, Serialize};
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "auth/load_access_levels";

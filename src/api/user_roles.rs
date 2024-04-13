@@ -1,6 +1,11 @@
+pub mod types {
+    pub(super) use crate::api::utils::{DeleteByIdQuery, EmptyResponse};
+    pub(super) use http::Method;
+    pub(super) use serde::{Deserialize, Serialize};
+}
+
 pub mod load_array {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     use crate::api::roles::types::Role;
 
@@ -19,8 +24,7 @@ pub mod load_array {
 }
 
 pub mod insert {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::PATCH;
     pub const PATH: &str = "user_role";
@@ -34,25 +38,19 @@ pub mod insert {
         pub role_id: i32,
     }
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
 
 pub mod delete {
-    use http::Method;
-    use serde::{Deserialize, Serialize};
+    use super::types::*;
 
     pub const METHOD: Method = Method::DELETE;
     pub const PATH: &str = "user_role";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub id: i32,
-    }
+    pub type Args = DeleteByIdQuery;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Body {}
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {}
+    pub type Response = EmptyResponse;
 }
