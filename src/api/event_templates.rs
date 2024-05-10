@@ -1,11 +1,8 @@
 pub mod types {
-    pub(super) use crate::api::utils::{
-        DeleteByIdQuery, EmptyResponse, LoadByIdBadRequestResponse, LoadByIdQuery,
-    };
+    pub(super) use crate::api::utils::*;
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
-    use crate::api::utils::UpdateOption;
     use std::time::Duration;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -89,6 +86,7 @@ pub mod update {
     pub type Body = UpdateEventTemplate;
 
     pub type Response = EmptyResponse;
+    pub type BadRequestResponse = UpdateBadRequestResponse;
 }
 
 pub mod delete {
@@ -103,4 +101,5 @@ pub mod delete {
     pub struct Body {}
 
     pub type Response = EmptyResponse;
+    pub type BadRequestResponse = DeleteBadRequestResponse;
 }

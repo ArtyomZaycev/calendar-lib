@@ -96,6 +96,16 @@ pub enum LoadByIdBadRequestResponse {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum UpdateBadRequestResponse {
+    NotFound,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum DeleteBadRequestResponse {
+    NotFound,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LoadByIdQuery {
     pub id: TableId,
 }
