@@ -12,7 +12,7 @@ pub mod load {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
-        pub user_id: Option<i32>,
+        pub user_id: i32,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]

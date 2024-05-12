@@ -14,7 +14,7 @@ pub mod load_array {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {
-        pub user_id: Option<i32>, // Admin can load roles of any user
+        pub user_id: i32,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
