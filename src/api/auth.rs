@@ -3,22 +3,20 @@ pub mod types {
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
-    // TODO: User id field
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct AccessLevel {
+        pub id: i32,
+        pub user_id: i32,
         pub level: i32,
         pub name: String,
-        pub edit_rights: bool,
     }
 
     impl AccessLevel {
-        pub const MAX_LEVEL: i32 = 1000;
+        pub const MAX_LEVEL: i32 = 255;
+        pub const MIN_LEVEL: i32 = 0;
 
-        pub fn is_max_level(&self) -> bool {
-            self.level >= Self::MAX_LEVEL
-        }
         pub fn is_full(&self) -> bool {
-            self.is_max_level() && self.edit_rights
+            self.level >= Self::MAX_LEVEL
         }
     }
 

@@ -8,3 +8,4 @@ pub mod user_roles;
 pub mod user_state;
 pub mod users;
 pub mod utils;
+pub mod sharing;
