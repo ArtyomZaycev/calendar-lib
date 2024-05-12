@@ -66,7 +66,6 @@ pub mod login {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
-        pub access_level: AccessLevel,
         pub jwt: String,
     }
 }
@@ -87,7 +86,6 @@ pub mod login_by_key {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
-        pub access_level: AccessLevel,
         pub jwt: String,
     }
 }
@@ -111,26 +109,6 @@ pub mod register {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub enum BadRequestResponse {
         EmailAlreadyUsed,
-    }
-
-    pub type Response = EmptyResponse;
-}
-
-pub mod new_password {
-    use super::types::*;
-
-    pub const METHOD: Method = Method::POST;
-    pub const PATH: &str = "auth/new_password";
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub user_id: i32,
-        pub access_level: i32,
-        pub viewer_password: Option<NewPassword>,
-        pub editor_password: Option<NewPassword>,
     }
 
     pub type Response = EmptyResponse;
