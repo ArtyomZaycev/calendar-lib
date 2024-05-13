@@ -83,9 +83,7 @@ pub mod load_array {
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "events";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {}
-
+    pub type Args = LoadArrayQuery;
     pub type Response = Vec<Event>;
 }
 

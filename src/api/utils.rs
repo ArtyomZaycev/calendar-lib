@@ -122,6 +122,11 @@ pub struct LoadByIdQuery {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LoadArrayQuery {
+    pub user_id: TableId,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DeleteByIdQuery {
     pub id: TableId,
 }

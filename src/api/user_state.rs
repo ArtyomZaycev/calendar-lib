@@ -4,7 +4,7 @@ pub mod load {
 
     use crate::api::{
         auth::types::AccessLevel, event_templates::types::EventTemplate, events::types::Event,
-        schedules::types::Schedule,
+        permissions::types::GrantedPermission, schedules::types::Schedule, utils::User,
     };
 
     pub const METHOD: Method = Method::GET;
@@ -17,10 +17,12 @@ pub mod load {
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
+        pub users: Vec<User>,
         pub access_levels: Vec<AccessLevel>,
         pub events: Vec<Event>,
         pub event_templates: Vec<EventTemplate>,
         pub schedules: Vec<Schedule>,
+        pub granted_permissions: Vec<GrantedPermission>,
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
