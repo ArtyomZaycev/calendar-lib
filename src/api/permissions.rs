@@ -120,6 +120,17 @@ pub mod types {
     }
 }
 
+pub mod load {
+    use super::types::*;
+
+    pub const METHOD: Method = Method::GET;
+    pub const PATH: &str = "permission";
+
+    pub type Args = LoadByIdQuery;
+    pub type Response = GrantedPermission;
+    pub type BadRequestResponse = LoadByIdBadRequestResponse;
+}
+
 pub mod load_array {
     use super::types::*;
 
@@ -165,4 +176,19 @@ pub mod update {
         NotFound,
         UserEmailNotFound,
     }
+}
+
+pub mod delete {
+    use super::types::*;
+
+    pub const METHOD: Method = Method::DELETE;
+    pub const PATH: &str = "permission";
+
+    pub type Args = DeleteByIdQuery;
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {}
+
+    pub type Response = EmptyResponse;
+    pub type BadRequestResponse = DeleteBadRequestResponse;
 }
