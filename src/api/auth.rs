@@ -1,31 +1,33 @@
 pub mod types {
     pub(super) use crate::api::utils::EmptyResponse;
+    use crate::api::utils::TableId;
     pub(super) use http::Method;
     pub(super) use serde::{Deserialize, Serialize};
 
-    // TODO: User id field
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct AccessLevel {
+        pub id: i32,
+        pub user_id: i32,
         pub level: i32,
         pub name: String,
-        pub edit_rights: bool,
     }
 
     impl AccessLevel {
-        pub const MAX_LEVEL: i32 = 1000;
+        pub const MAX_LEVEL: i32 = 255;
+        pub const MIN_LEVEL: i32 = 0;
 
-        pub fn is_max_level(&self) -> bool {
-            self.level >= Self::MAX_LEVEL
-        }
         pub fn is_full(&self) -> bool {
-            self.is_max_level() && self.edit_rights
+            self.level >= Self::MAX_LEVEL
         }
     }
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct NewPassword {
+    pub struct AccessLevelChange {
+        /// -1 for new access levels
+        pub id: TableId,
+        pub old_level: i32,
+        pub new_level: i32,
         pub name: String,
-        pub password: String,
     }
 }
 
@@ -68,7 +70,6 @@ pub mod login {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
-        pub access_level: AccessLevel,
         pub jwt: String,
     }
 }
@@ -89,7 +90,6 @@ pub mod login_by_key {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {
         pub user: User,
-        pub access_level: AccessLevel,
         pub jwt: String,
     }
 }
@@ -118,26 +118,6 @@ pub mod register {
     pub type Response = EmptyResponse;
 }
 
-pub mod new_password {
-    use super::types::*;
-
-    pub const METHOD: Method = Method::POST;
-    pub const PATH: &str = "auth/new_password";
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {}
-
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Body {
-        pub user_id: i32,
-        pub access_level: i32,
-        pub viewer_password: Option<NewPassword>,
-        pub editor_password: Option<NewPassword>,
-    }
-
-    pub type Response = EmptyResponse;
-}
-
 pub mod load_access_levels {
     use super::types::*;
 
@@ -147,8 +127,31 @@ pub mod load_access_levels {
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Args {}
 
+    pub type Response = Vec<AccessLevel>;
+}
+
+pub mod change_access_levels {
+    use crate::api::utils::TableId;
+
+    use super::types::*;
+
+    pub const METHOD: Method = Method::POST;
+    pub const PATH: &str = "auth/change_access_levels";
+
     #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Response {
-        pub array: Vec<AccessLevel>,
+    pub struct Args {
+        pub user_id: TableId,
     }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct Body {
+        pub array: Vec<AccessLevelChange>,
+    }
+
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub enum BadRequestResponse {
+        InvalidChanges,
+    }
+
+    pub type Response = EmptyResponse;
 }

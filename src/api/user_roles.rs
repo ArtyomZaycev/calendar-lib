@@ -12,10 +12,7 @@ pub mod load_array {
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "user_roles";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {
-        pub user_id: Option<i32>, // Admin can load roles of any user
-    }
+    pub type Args = LoadArrayQuery;
 
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Response {

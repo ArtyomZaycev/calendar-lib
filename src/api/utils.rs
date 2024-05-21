@@ -1,7 +1,7 @@
 use super::roles::types::Role;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct User {
     pub id: i32,
     pub name: String,
@@ -9,12 +9,23 @@ pub struct User {
     pub roles: Vec<Role>,
 }
 
+impl Default for User {
+    fn default() -> Self {
+        Self {
+            id: -1,
+            name: Default::default(),
+            email: Default::default(),
+            roles: Default::default(),
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum UnauthorizedResponse {
     WrongKey,
     SessionExpired,
     NoAccessLevel,
-    NoEditRights,
+    NoPermission,
     Unauthorized,
 }
 
@@ -108,6 +119,11 @@ pub enum DeleteBadRequestResponse {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LoadByIdQuery {
     pub id: TableId,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LoadArrayQuery {
+    pub user_id: TableId,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
