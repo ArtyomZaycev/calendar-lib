@@ -119,14 +119,14 @@ pub mod register {
 }
 
 pub mod load_access_levels {
+    use crate::api::utils::LoadArrayQuery;
+
     use super::types::*;
 
     pub const METHOD: Method = Method::GET;
     pub const PATH: &str = "auth/load_access_levels";
 
-    #[derive(Debug, Clone, Serialize, Deserialize)]
-    pub struct Args {}
-
+    pub type Args = LoadArrayQuery;
     pub type Response = Vec<AccessLevel>;
 }
 
